@@ -12,16 +12,23 @@ import 'package:training_project/screens/login.dart';
 //import 'package:training_project/models/product.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   void signUserout()
   {
     FirebaseAuth.instance.signOut();
 
   }
+
   @override
   Widget build(context) {
-    return SafeArea(
-      child: SingleChildScrollView(
+    return 
+    SafeArea(
+
         child: Column(
           children: [
             SizedBox(
@@ -44,12 +51,12 @@ class Body extends StatelessWidget {
             ),
 
             //start of the categories section
-            Categories(),
+            //Categories(),
             //end of the categories section
 
-            SizedBox(
-              height: (30 / 375.0) * MediaQuery.of(context).size.width,
-            ),
+            //SizedBox(
+            //  height: (30 / 375.0) * MediaQuery.of(context).size.width,
+            //),
 
             //start of the special offer section (title)
             Padding(
@@ -115,37 +122,36 @@ class Body extends StatelessWidget {
             SizedBox(
               height: (20 / 375.0) * MediaQuery.of(context).size.width,
             ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30)),
-              height: 45,
-              width: 200,
-              child: ElevatedButton(
-                onPressed: () {
-                  signUserout();
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()), // Replace `HomeScreen` with the actual name of your HomeScreen widget
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ), backgroundColor: const Color.fromARGB(255, 176, 51, 42),
-                ),
-                child: const Text(
-                  "Sign out",
-                  style: TextStyle(fontWeight: FontWeight.w700),
-                ),
-              ),
-            ),
+            // Container(
+            //   decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(30)),
+            //   height: 45,
+            //   width: 200,
+            //   child: ElevatedButton(
+            //     onPressed: () {
+            //       signUserout();
+            //       Navigator.pushReplacement(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => LoginPage()), // Replace `HomeScreen` with the actual name of your HomeScreen widget
+            //       );
+            //     },
+            //     style: ElevatedButton.styleFrom(
+            //       shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(15),
+            //       ), backgroundColor: const Color.fromARGB(255, 176, 51, 42),
+            //     ),
+            //     child: const Text(
+            //       "Sign out",
+            //       style: TextStyle(fontWeight: FontWeight.w700),
+            //     ),
+            //   ),
+            // ),
             //start of the bottom nav bar
 
             //end of the bottom nav bar
 
           ],
         ),
-      ),
-    );
+      );
   }
 }

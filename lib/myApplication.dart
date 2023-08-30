@@ -1,5 +1,6 @@
 import 'package:training_project/customNavBar.dart';
 import 'package:flutter/material.dart';
+import 'package:training_project/home/components/homeScreen.dart';
 import 'package:training_project/profile.dart';
 import 'package:training_project/favorite.dart';
 import 'package:training_project/home/components/body.dart';
@@ -16,7 +17,7 @@ class _MyApplicationState extends State<MyApplication>
    int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    Body(),
+    HomeScreen(),
     Favorite(),
     Profile(),
   ];
