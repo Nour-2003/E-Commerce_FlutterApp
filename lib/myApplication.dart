@@ -6,12 +6,12 @@ import 'package:training_project/home/components/body.dart';
 
 
 
-class MyApp extends StatefulWidget {
+class MyApplication extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _MyApplicationState createState() => _MyApplicationState();
 }
 
-class _MyAppState extends State<MyApp>
+class _MyApplicationState extends State<MyApplication>
 {
    int _currentIndex = 0;
 

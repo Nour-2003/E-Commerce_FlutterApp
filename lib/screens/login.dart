@@ -1,9 +1,13 @@
+import 'dart:ui';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:training_project/home/components/homeScreen.dart';
-//import 'package:signui/screens/register.dart';
+// import 'package:signui/screens/register.dart';
 import 'package:training_project/screens/register.dart';
 import 'package:training_project/myApplication.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:training_project/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -15,6 +19,57 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool tick = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  //text editing controllers
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  //sign user in method
+  void signUserIn() async {
+    //show loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+    //try sign in
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
+      //pop the loading circle
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      //pop the loading circle
+      Navigator.pop(context);
+
+      //show error message
+      showErrorMessage(e.code);
+    }
+  }
+
+  //wrong message popup
+  void showErrorMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            backgroundColor: Color(0xFFFF7643),
+            title: Center(
+              child: Text(
+                message,
+                style: const TextStyle(color: Colors.white),
+              ),
+            ));
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       children: [
                         TextFormField(
+                          controller: emailController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your email';
@@ -79,6 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 20,
                         ),
                         TextFormField(
+                          controller: passwordController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your password';
@@ -95,40 +152,6 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              child: Row(
-                                children: [
-                                  Checkbox(
-                                    checkColor: Colors.white,
-                                    activeColor: Colors.red,
-                                    value: tick,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        tick = !tick;
-                                      });
-                                    },
-                                  ),
-                                  const Text("Remember")
-                                ],
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {},
-                              child: const Text(
-                                "Forget Password?",
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 236, 101, 92),
-                                    fontWeight: FontWeight.w300),
-                              ),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
                           height: 40,
                         ),
                         Container(
@@ -138,19 +161,12 @@ class _LoginPageState extends State<LoginPage> {
                           width: 200,
                           child: ElevatedButton(
                             onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyApp()),
-                                );
-                              }
+                              signUserIn();
                             },
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
-                              ),
-                              primary: const Color.fromARGB(255, 176, 51, 42),
+                              ), backgroundColor: const Color.fromARGB(255, 176, 51, 42),
                             ),
                             child: const Text(
                               "Sign In",
@@ -159,7 +175,40 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         const SizedBox(
-                          height: 30,
+                          height: 15,
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "___________ or continue with ___________",
+                              style: TextStyle(color: Colors.grey),
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+
+
+                        //Google button
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () => AuthService().signInWithGoogle(),
+                              child: Image.asset(
+                                'assets/images/pngwing.com.png',
+                                height: 72,
+                              ),
+                            )
+                          ],
+                        ),
+
+
+
+                        const SizedBox(
+                          height: 10,
                         ),
                         InkWell(
                           onTap: () {

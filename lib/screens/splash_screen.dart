@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:training_project/screens/auth_page.dart';
 import 'package:training_project/screens/login.dart';
 
 class splash_screen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _splash_screenState extends State<splash_screen> {
     Future.delayed(Duration(seconds: 1), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
+        MaterialPageRoute(builder: (context) => AuthPage()),
       );
     });
   }

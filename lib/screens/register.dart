@@ -1,6 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:training_project/screens/login.dart';
+import 'package:training_project/home/components/homeScreen.dart';
+//import 'package:training_project/home/components/homeScreen.dart';
+import 'package:training_project/main.dart';
 import 'package:training_project/myApplication.dart';
+// import 'package:training_project/home/components/homeScreen.dart';
+import 'package:training_project/screens/login.dart';
+// import 'package:training_project/myApplication.dart';
+// import 'package:training_project/screens/splash_screen.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -11,12 +18,69 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  //text editing controllers
   final TextEditingController _passwordController = TextEditingController();
+  final emailController = TextEditingController();
+
+  // final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
     _passwordController.dispose();
     super.dispose();
+  }
+
+  void signUserUp() async {
+    // show loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+    try {
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: _passwordController.text,
+      );
+
+
+      //pop the loading circle
+      Navigator.pop(context);
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MyApplication()), // Replace `HomeScreen` with the actual name of your HomeScreen widget
+      );
+
+    } on FirebaseAuthException catch (e) {
+      //pop the loading circle
+      Navigator.pop(context);
+
+      showErrorMessage(e.code);
+    }
+  }
+
+  void showErrorMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            backgroundColor: Color(0xFFFF7643),
+            title: Center(
+              child: Text(
+                message,
+                style: const TextStyle(color: Colors.white),
+              ),
+            ));
+      },
+    );
   }
 
   @override
@@ -49,7 +113,8 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Container(
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40)),
                 color: Colors.white,
               ),
               height: double.infinity,
@@ -85,6 +150,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 20,
                         ),
                         TextFormField(
+                          controller: emailController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your email';
@@ -111,6 +177,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 20,
                         ),
                         TextFormField(
+                          controller: _passwordController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter a password';
@@ -120,7 +187,6 @@ class _RegisterPageState extends State<RegisterPage> {
                             }
                             return null;
                           },
-                          controller: _passwordController,
                           obscureText: true,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -139,6 +205,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 20,
                         ),
                         TextFormField(
+                          controller: confirmPasswordController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please rewrite the password';
@@ -162,11 +229,21 @@ class _RegisterPageState extends State<RegisterPage> {
                             labelText: 'Rewrite Password',
                           ),
                         ),
+
                         const SizedBox(
                           height: 20,
                         ),
                         TextFormField(
                           keyboardType: TextInputType.number,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a phone number';
+                            }
+                            if (value.length != 11 || !value.startsWith('01')) {
+                              return 'Please enter a valid 11-digit phone number starting with 01';
+                            }
+                            return null;
+                          },
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -180,6 +257,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             labelText: 'Mobile Number',
                           ),
                         ),
+
                         const SizedBox(
                           height: 10,
                         ),
@@ -191,11 +269,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
-                              primary: const Color.fromARGB(255, 188, 69, 61),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 188, 69, 61),
                             ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                // All fields are valid, proceed with registration
+                                signUserUp();
                               }
                             },
                             child: const Text(
@@ -211,12 +290,15 @@ class _RegisterPageState extends State<RegisterPage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const LoginPage()),
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginPage()),
                             );
                           },
                           child: RichText(
                             text: const TextSpan(children: [
-                              TextSpan(text: 'or  ', style: TextStyle(color: Colors.grey)),
+                              TextSpan(
+                                  text: 'or  ',
+                                  style: TextStyle(color: Colors.grey)),
                               TextSpan(
                                 text: 'Sign in ',
                                 style: TextStyle(color: Colors.black),
