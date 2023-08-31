@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:training_project/favorite.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   final Map<String, dynamic> product;
@@ -78,14 +79,22 @@ class ProductDetailsPage extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.all(
                               (8 / 375.0) * MediaQuery.of(context).size.width),
-                          width: (28 / 375.0) * MediaQuery.of(context).size.width,
-                          height: (28 / 375.0) * MediaQuery.of(context).size.width,
+                          width: (36 / 375.0) * MediaQuery.of(context).size.width,
+                          height: (36 / 375.0) * MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             color:
                             const Color(0xFF979797).withOpacity(0.1),
                             shape: BoxShape.circle,
                           ),
-                          child: SvgPicture.asset("HomePageImgs/HeartIcon_2.svg"),
+                          child: GestureDetector(onTap:(){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Favorite(),
+                              ),
+                            );
+                          },child: Icon(Icons.favorite_border,color: Colors.red,)
+                          ),
                         ),
                       ],
                     ),
