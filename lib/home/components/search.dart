@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:training_project/screens/searchresult.dart';
+import 'package:training_project/screens/SearchDisp.dart';
 
 
 class Search extends StatelessWidget
@@ -27,7 +27,7 @@ class Search extends StatelessWidget
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => searchresult()),
+                      builder: (context) => SearchDisp()),
                 );
               },
               decoration: InputDecoration(
