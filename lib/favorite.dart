@@ -1,7 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'DataBaseHelper.dart';
-
 
 class Favorite extends StatefulWidget {
   @override
@@ -29,15 +28,23 @@ class _FavoriteState extends State<Favorite> {
   }
 
   Future<void> _loadFavorites() async {
-    final loadedFavorites = await DatabaseHelper.instance.getAllFavorites();
-    setState(() {
-      favorites = loadedFavorites;
-    });
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final userId = user.uid;
+      final loadedFavorites = await DatabaseHelper.instance.getUserFavorites(userId);
+      setState(() {
+        favorites = loadedFavorites;
+      });
+    }
   }
 
   void _removeFavorite(int productId) async {
-    await DatabaseHelper.instance.deleteFavorite(productId);
-    _loadFavorites();
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final userId = user.uid;
+      await DatabaseHelper.instance.deleteFavorite(userId, productId);
+      _loadFavorites();
+    }
   }
 
   @override

@@ -1,7 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import '../DataBaseHelper.dart';
-
 
 class ProductDetailsPage extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -22,26 +21,35 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   }
 
   Future<void> _checkFavoriteStatus() async {
-    final isFav = await DatabaseHelper.instance.isFavorite(widget.product['id']);
-    setState(() {
-      isFavorite = isFav;
-    });
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final userId = user.uid;
+      final isFav = await DatabaseHelper.instance.isFavorite(userId, widget.product['id']);
+      setState(() {
+        isFavorite = isFav;
+      });
+    }
   }
 
   Future<void> _toggleFavorite() async {
-    if (isFavorite) {
-      await DatabaseHelper.instance.deleteFavorite(widget.product['id']);
-    } else {
-      await DatabaseHelper.instance.insertFavorite({
-        'productId': widget.product['id'],
-        'title': widget.product['title'],
-        'price': widget.product['price'],
-        'image': widget.product['images'][0],
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final userId = user.uid;
+      if (isFavorite) {
+        await DatabaseHelper.instance.deleteFavorite(userId, widget.product['id']);
+      } else {
+        await DatabaseHelper.instance.insertFavorite({
+          'userId': userId,
+          'productId': widget.product['id'],
+          'title': widget.product['title'],
+          'price': widget.product['price'],
+          'image': widget.product['images'][0],
+        });
+      }
+      setState(() {
+        isFavorite = !isFavorite;
       });
     }
-    setState(() {
-      isFavorite = !isFavorite;
-    });
   }
 
   @override
