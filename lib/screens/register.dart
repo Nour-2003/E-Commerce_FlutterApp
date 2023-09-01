@@ -25,6 +25,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   // final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  bool passwordtobescured = true;
+  bool passwordtobescured1 = true;
 
   @override
   void dispose() {
@@ -134,6 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           },
                           decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.person,color: Colors.deepOrange,),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -161,6 +164,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           },
                           decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.email,color: Colors.deepOrange,),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -177,6 +181,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 20,
                         ),
                         TextFormField(
+                          obscureText: passwordtobescured,
                           controller: _passwordController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -187,8 +192,20 @@ class _RegisterPageState extends State<RegisterPage> {
                             }
                             return null;
                           },
-                          obscureText: true,
                           decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                icon: Icon(passwordtobescured
+                                    ? Icons.visibility_off
+                                    : Icons.visibility),
+                                onPressed: () {
+                                  setState(() {
+                                    passwordtobescured = !passwordtobescured;
+                                  });
+                                }),
+                            prefixIcon: Icon(
+                              Icons.lock,
+                              color: Colors.deepOrange,
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -205,6 +222,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 20,
                         ),
                         TextFormField(
+                          obscureText: passwordtobescured1,
                           controller: confirmPasswordController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -215,8 +233,20 @@ class _RegisterPageState extends State<RegisterPage> {
                             }
                             return null;
                           },
-                          obscureText: true,
                           decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                icon: Icon(passwordtobescured1
+                                    ? Icons.visibility_off
+                                    : Icons.visibility),
+                                onPressed: () {
+                                  setState(() {
+                                    passwordtobescured1 = !passwordtobescured1;
+                                  });
+                                }),
+                            prefixIcon: Icon(
+                              Icons.lock,
+                              color: Colors.deepOrange,
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -234,6 +264,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 20,
                         ),
                         TextFormField(
+
                           keyboardType: TextInputType.number,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -245,6 +276,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           },
                           decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.phone,color: Colors.deepOrange,),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),

@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   //text editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
+  bool passwordtobescured = true;
   //sign user in method
   void signUserIn() async {
     //show loading circle
@@ -124,6 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                             return null;
                           },
                           decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.email,color: Colors.deepOrange,),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -135,6 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 20,
                         ),
                         TextFormField(
+                          obscureText: passwordtobescured,
                           controller: passwordController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -142,8 +144,20 @@ class _LoginPageState extends State<LoginPage> {
                             }
                             return null;
                           },
-                          obscureText: true,
                           decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                icon: Icon(passwordtobescured
+                                    ? Icons.visibility_off
+                                    : Icons.visibility),
+                                onPressed: () {
+                                  setState(() {
+                                    passwordtobescured = !passwordtobescured;
+                                  });
+                                }),
+                            prefixIcon: Icon(
+                              Icons.lock,
+                              color: Colors.deepOrange,
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
