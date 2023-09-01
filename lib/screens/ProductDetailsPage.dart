@@ -1,11 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:training_project/favorite.dart';
 
-class ProductDetailsPage extends StatelessWidget {
+import '../DataBaseHelper.dart';
+
+
+class ProductDetailsPage extends StatefulWidget {
   final Map<String, dynamic> product;
 
   ProductDetailsPage({required this.product});
+
+  @override
+  _ProductDetailsPageState createState() => _ProductDetailsPageState();
+}
+
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
+  bool isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkFavoriteStatus();
+  }
+
+  Future<void> _checkFavoriteStatus() async {
+    final isFav = await DatabaseHelper.instance.isFavorite(widget.product['id']);
+    setState(() {
+      isFavorite = isFav;
+    });
+  }
+
+  Future<void> _toggleFavorite() async {
+    if (isFavorite) {
+      await DatabaseHelper.instance.deleteFavorite(widget.product['id']);
+    } else {
+      await DatabaseHelper.instance.insertFavorite({
+        'productId': widget.product['id'],
+        'title': widget.product['title'],
+        'price': widget.product['price'],
+        'image': widget.product['images'][0],
+      });
+    }
+    setState(() {
+      isFavorite = !isFavorite;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +58,7 @@ class ProductDetailsPage extends StatelessWidget {
                 child: IconButton(
                   icon: Icon(Icons.arrow_back),
                   onPressed: () {
-                    Navigator.pop(context); // Navigate back when back button is pressed
+                    Navigator.pop(context);
                   },
                 ),
               ),
@@ -36,29 +73,29 @@ class ProductDetailsPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          product['category'], // Replace with actual category key
+                          widget.product['category'],
                           style: TextStyle(fontSize: 16, color: Colors.grey),
                         ),
                         SizedBox(height: 8),
                         Image.network(
-                          product['images'][0],
+                          widget.product['images'][0],
                           height: 200,
                           width: 200,
                         ),
                         SizedBox(height: 16),
                         Text(
-                          product['title'],
+                          widget.product['title'],
                           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 8),
                         Text(
-                          product['description'], // Replace with actual description key
+                          widget.product['description'],
                           style: TextStyle(fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 8),
                         Text(
-                          '\$${product["price"].toString()}',
+                          '\$${widget.product["price"].toString()}',
                           style: TextStyle(fontSize: 18, color: Colors.green),
                         ),
                         SizedBox(height: 8),
@@ -68,7 +105,7 @@ class ProductDetailsPage extends StatelessWidget {
                             Icon(Icons.star, color: Colors.yellow),
                             SizedBox(width: 4),
                             Text(
-                              '${product["rating"]} Stars', // Replace with actual rating key
+                              '${widget.product["rating"]} Stars',
                               style: TextStyle(fontSize: 16),
                             ),
                           ],
@@ -86,14 +123,12 @@ class ProductDetailsPage extends StatelessWidget {
                             const Color(0xFF979797).withOpacity(0.1),
                             shape: BoxShape.circle,
                           ),
-                          child: GestureDetector(onTap:(){
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Favorite(),
-                              ),
-                            );
-                          },child: Icon(Icons.favorite_border,color: Colors.red,)
+                          child: GestureDetector(
+                            onTap: _toggleFavorite,
+                            child: Icon(
+                              isFavorite ? Icons.favorite : Icons.favorite_border,
+                              color: isFavorite ? Colors.red : null,
+                            ),
                           ),
                         ),
                       ],
