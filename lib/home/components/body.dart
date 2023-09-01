@@ -18,77 +18,80 @@ class _BodyState extends State<Body> {
     FirebaseAuth.instance.signOut();
   }
 
+
   @override
   Widget build(context) {
-    return SafeArea(
-      child: ListView(
-        children: [
-          SizedBox(
-            height: (30 / 375.0) * MediaQuery.of(context).size.width,
-          ),
-          Search(),
-          SizedBox(
-            height: (30 / 375.0) * MediaQuery.of(context).size.width,
-          ),
-          Discount(),
-          SizedBox(
-            height: (30 / 375.0) * MediaQuery.of(context).size.width,
-          ),
-          Categories(),
-          SizedBox(
-            height: (30 / 375.0) * MediaQuery.of(context).size.width,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: (20 / 375.0) * MediaQuery.of(context).size.width),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Special Offer for You",
-                  style: TextStyle(
-                    fontSize:
-                    (18 / 375.0) * MediaQuery.of(context).size.width,
-                    color: Colors.black,
-                  ),
-                ),
-                const Text("See More"),
-              ],
+    return Scaffold(
+      body: SafeArea(
+        child: ListView(
+          children: [
+            SizedBox(
+              height: (30 / 375.0) * MediaQuery.of(context).size.width,
             ),
-          ),
-          SizedBox(
-            height: (20 / 375.0) * MediaQuery.of(context).size.width,
-          ),
-          SpecialOffer(),
-          SizedBox(
-            height: (20 / 375.0) * MediaQuery.of(context).size.width,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: (20 / 375.0) * MediaQuery.of(context).size.width),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Popular Products",
-                  style: TextStyle(
-                    fontSize:
-                    (18 / 375.0) * MediaQuery.of(context).size.width,
-                    color: Colors.black,
-                  ),
-                ),
-                const Text("See More"),
-              ],
+            Search(),
+            SizedBox(
+              height: (30 / 375.0) * MediaQuery.of(context).size.width,
             ),
-          ),
-          SizedBox(
-            height: (20 / 375.0) * MediaQuery.of(context).size.width,
-          ),
-          PopularProducts(),
-          SizedBox(
-            height: (20 / 375.0) * MediaQuery.of(context).size.width,
-          ),
-        ],
+            Discount(),
+            SizedBox(
+              height: (30 / 375.0) * MediaQuery.of(context).size.width,
+            ),
+            Categories(),
+            SizedBox(
+              height: (30 / 375.0) * MediaQuery.of(context).size.width,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: (20 / 375.0) * MediaQuery.of(context).size.width),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Special Offer for You",
+                    style: TextStyle(
+                      fontSize:
+                      (18 / 375.0) * MediaQuery.of(context).size.width,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                  const Text("See More"),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: (20 / 375.0) * MediaQuery.of(context).size.width,
+            ),
+            SpecialOffer(),
+            SizedBox(
+              height: (20 / 375.0) * MediaQuery.of(context).size.width,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: (20 / 375.0) * MediaQuery.of(context).size.width),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Popular Products",
+                    style: TextStyle(
+                      fontSize:
+                      (18 / 375.0) * MediaQuery.of(context).size.width,
+                        color: Theme.of(context).colorScheme.onSurface
+                    ),
+                  ),
+                  const Text("See More"),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: (20 / 375.0) * MediaQuery.of(context).size.width,
+            ),
+            PopularProducts(),
+            SizedBox(
+              height: (20 / 375.0) * MediaQuery.of(context).size.width,
+            ),
+          ],
+        ),
       ),
     );
   }

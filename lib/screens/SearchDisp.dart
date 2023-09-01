@@ -54,70 +54,73 @@ class _SearchDispState extends State<SearchDisp> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pop(context); // Navigate back when back button is pressed
-                },
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    onChanged: searchProducts,
-                    decoration: InputDecoration(
-                      hintText: 'Search for products...',
-                      prefixIcon: Icon(Icons.search),
-                    ),
-                  ),
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context); // Navigate back when back button is pressed
+                  },
                 ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xFF979797).withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  children: [
-                    Icon(Icons.shopping_bag),
-                    SizedBox(width: 10),
-                    Text(
-                      '${filteredList.length} ',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black, // Set the color to black
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      onChanged: searchProducts,
+                      decoration: InputDecoration(
+                        hintText: 'Search for products...',
+                        prefixIcon: Icon(Icons.search),
                       ),
                     ),
-
-                  ],
-                ),
-              ),
-
-            ],
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: filteredList.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    filteredList[index]["title"],
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  onTap: () {
-                    navigateToProductDetails(filteredList[index]);
-                  },
-                );
-              },
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF979797).withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    children: [
+                      Icon(Icons.shopping_bag),
+                      SizedBox(width: 10),
+                      Text(
+                        '${filteredList.length} ',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Theme.of(context).colorScheme.onSurface, // Set the color to black
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
+
+              ],
             ),
-          ),
-        ],
+            Expanded(
+              child: ListView.builder(
+                itemCount: filteredList.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(
+                      filteredList[index]["title"],
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Theme.of(context).colorScheme.onSurface),
+                    ),
+                    onTap: () {
+                      navigateToProductDetails(filteredList[index]);
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

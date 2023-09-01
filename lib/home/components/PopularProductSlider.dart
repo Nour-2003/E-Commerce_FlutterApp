@@ -80,8 +80,8 @@ class _PopularProductsState extends State<PopularProducts> {
                     const SizedBox(height: 5),
                     Text(
                       jasonList[index]["title"],
-                      style: const TextStyle(
-                        color: Colors.black,
+                      style:  TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                       maxLines: 1,
                     ),

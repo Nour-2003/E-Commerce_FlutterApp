@@ -48,96 +48,94 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFFFF7643),
+                  Color(0xff281537),
+                ],
               ),
             ),
-            Expanded(
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          widget.product['category'],
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
-                        ),
-                        SizedBox(height: 8),
-                        Image.network(
-                          widget.product['images'][0],
-                          height: 200,
-                          width: 200,
-                        ),
-                        SizedBox(height: 16),
-                        Text(
-                          widget.product['title'],
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          widget.product['description'],
-                          style: TextStyle(fontSize: 16),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          '\$${widget.product["price"].toString()}',
-                          style: TextStyle(fontSize: 18, color: Colors.green),
-                        ),
-                        SizedBox(height: 8),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star, color: Colors.yellow),
-                            SizedBox(width: 4),
-                            Text(
-                              '${widget.product["rating"]} Stars',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: (20 / 375.0) * MediaQuery.of(context).size.width,
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(
-                              (8 / 375.0) * MediaQuery.of(context).size.width),
-                          width: (36 / 375.0) * MediaQuery.of(context).size.width,
-                          height: (36 / 375.0) * MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            color:
-                            const Color(0xFF979797).withOpacity(0.1),
-                            shape: BoxShape.circle,
-                          ),
-                          child: GestureDetector(
-                            onTap: _toggleFavorite,
-                            child: Icon(
-                              isFavorite ? Icons.favorite : Icons.favorite_border,
-                              color: isFavorite ? Colors.red : null,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          title: Text('Product Details'),
+        ),
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                widget.product['category'],
+                style: TextStyle(fontSize: 16, color: Colors.grey),
+              ),
+              SizedBox(height: 8),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.network(
+                  widget.product['images'][0],
+                  height:300,
+                  width: 300,
+                  fit: BoxFit.fill,
+                ),
+              ),
+              SizedBox(height: 16),
+              Text(
+                widget.product['title'],
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 8),
+              Text(
+                widget.product['description'],
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 8),
+              Text(
+                '\$${widget.product["price"].toString()}',
+                style: TextStyle(fontSize: 18, color: Colors.green),
+              ),
+              SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.star, color: Colors.yellow),
+                  SizedBox(width: 4),
+                  Text(
+                    '${widget.product["rating"]} Stars',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              GestureDetector(
+                onTap: _toggleFavorite,
+                child: Container(
+                  width: 72,
+                  height: 72,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: isFavorite
+                        ? Colors.red.withOpacity(0.1)
+                        : Colors.grey.withOpacity(0.1),
+                  ),
+                  child: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: isFavorite ? Colors.red : null,
+                    size: 36,
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -4,6 +4,8 @@ import 'package:training_project/home/components/homeScreen.dart';
 import 'package:training_project/profile.dart';
 import 'package:training_project/favorite.dart';
 import 'package:training_project/home/components/body.dart';
+import 'package:training_project/theme/dark_theme.dart';
+import 'package:training_project/theme/light_theme.dart';
 
 
 
@@ -21,13 +23,28 @@ class _MyApplicationState extends State<MyApplication>
     Favorite(),
     Profile(),
   ];
-
+    bool iconBool = false;
+   IconData iconLight = Icons.wb_sunny;
+   IconData iconDark = Icons.nights_stay;
    @override
   Widget build(context)
   {
     return MaterialApp(
+      theme: iconBool ? lightTheme : darkTheme,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: iconBool? Colors.white : Colors.black,
+        floatingActionButton:FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              iconBool = !iconBool;
+            });
+          },
+          child: Icon(
+            iconBool ? iconDark : iconLight,color:iconBool? Colors.black : Colors.white,
+          ),
+        ),
+        floatingActionButtonLocation:FloatingActionButtonLocation.endFloat ,
         body: IndexedStack(
           index: _currentIndex,
           children: _screens,
