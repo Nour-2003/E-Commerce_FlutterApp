@@ -13,11 +13,13 @@ class ProductDetailsPage extends StatefulWidget {
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   bool isFavorite = false;
+  bool isAddedToCart = false;
 
   @override
   void initState() {
     super.initState();
     _checkFavoriteStatus();
+    _checkCartStatus();
   }
 
   Future<void> _checkFavoriteStatus() async {
@@ -27,6 +29,17 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       final isFav = await DatabaseHelper.instance.isFavorite(userId, widget.product['id']);
       setState(() {
         isFavorite = isFav;
+      });
+    }
+  }
+
+  Future<void> _checkCartStatus() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final userId = user.uid;
+      final isCart = await DatabaseHelper.instance.isCartItem(userId, widget.product['id']);
+      setState(() {
+        isAddedToCart = isCart;
       });
     }
   }
@@ -48,6 +61,27 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       }
       setState(() {
         isFavorite = !isFavorite;
+      });
+    }
+  }
+
+  Future<void> _addToCart() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final userId = user.uid;
+      if (isAddedToCart) {
+        await DatabaseHelper.instance.deleteCartItem(userId, widget.product['id']);
+      } else {
+        await DatabaseHelper.instance.insertCartItem({
+          'userId': userId,
+          'productId': widget.product['id'],
+          'title': widget.product['title'],
+          'price': widget.product['price'],
+          'image': widget.product['images'][0],
+        });
+      }
+      setState(() {
+        isAddedToCart = !isAddedToCart;
       });
     }
   }
@@ -89,7 +123,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
                   widget.product['images'][0],
-                  height:300,
+                  height: 300,
                   width: 300,
                   fit: BoxFit.fill,
                 ),
@@ -138,6 +172,25 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   child: Icon(
                     isFavorite ? Icons.favorite : Icons.favorite_border,
                     color: isFavorite ? Colors.red : null,
+                    size: 36,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              GestureDetector(
+                onTap: _addToCart,
+                child: Container(
+                  width: 72,
+                  height: 72,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: isAddedToCart
+                        ? Colors.red.withOpacity(0.1)
+                        : Colors.grey.withOpacity(0.1),
+                  ),
+                  child: Icon(
+                    isAddedToCart ? Icons.remove_shopping_cart : Icons.add_shopping_cart,
+                    color: isAddedToCart ? Colors.red : null,
                     size: 36,
                   ),
                 ),

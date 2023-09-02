@@ -1,155 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:training_project/screens/CategoryProductsPage.dart';
 
 class Categories extends StatelessWidget {
   final List<Map<String, dynamic>> category = [
-    {"icon": "HomePageImgs/FlashIcon.svg", "text": "Flash Deal"},
-    {"icon": "HomePageImgs/BillIcon.svg", "text": "Bill"},
-    {"icon": "HomePageImgs/GameIcon.svg", "text": "Game"},
-    {"icon": "HomePageImgs/GiftIcon.svg", "text": "Daily Gift"},
-    {"icon": "HomePageImgs/Discover.svg", "text": "More"},
+    {"icon": "HomePageImgs/mobile-svgrepo-com.svg", "text": "smartphones"},
+    {"icon": "HomePageImgs/laptop-svgrepo-com.svg", "text": "laptops"},
+    {"icon": "HomePageImgs/broom-svgrepo-com.svg", "text": "skincare"},
+    {"icon": "HomePageImgs/perfume-svgrepo-com.svg", "text": "fragrances"},
+    {"icon": "HomePageImgs/groceries-svgrepo-com.svg", "text": "groceries"},
   ];
+
+  final List<dynamic> jsonList; // Define jsonList as a property
+
+  Categories({required this.jsonList}); // Constructor to receive jsonList
 
   @override
   Widget build(context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(
+      padding: EdgeInsets.symmetric(
         horizontal: (20 / 375.0) * MediaQuery.of(context).size.width,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: (55 / 375.0) * MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                AspectRatio(
-                  aspectRatio: 1,
-                  child: Container(
-                    padding: EdgeInsets.all(
-                        (15 / 375.0) * MediaQuery.of(context).size.width),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFECDF),
-                      borderRadius: BorderRadius.circular(10),
+          for (int i = 0; i < category.length; i++)
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CategoryProductsPage(
+                      categoryText: category[i]["text"],
+                      productList: jsonList, // Pass jsonList to the page
                     ),
-                    child: SvgPicture.asset(category[0]["icon"]),
                   ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  category[0]["text"],
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            width: (55 / 375.0) * MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                AspectRatio(
-                  aspectRatio: 1,
-                  child: Container(
-                    padding: EdgeInsets.all(
-                        (15 / 375.0) * MediaQuery.of(context).size.width),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFECDF),
-                      borderRadius: BorderRadius.circular(10),
+                );
+              },
+              child: SizedBox(
+                width: (55 / 375.0) * MediaQuery.of(context).size.width,
+                child: Column(
+                  children: [
+                    AspectRatio(
+                      aspectRatio: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(
+                            (15 / 375.0) * MediaQuery.of(context).size.width),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFFECDF),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: SvgPicture.asset(category[i]["icon"]),
+                      ),
                     ),
-                    child: SvgPicture.asset(category[1]["icon"]),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  category[1]["text"],
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            width: (55 / 375.0) * MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                AspectRatio(
-                  aspectRatio: 1,
-                  child: Container(
-                    padding: EdgeInsets.all(
-                        (15 / 375.0) * MediaQuery.of(context).size.width),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFECDF),
-                      borderRadius: BorderRadius.circular(10),
+                    const SizedBox(
+                      height: 5,
                     ),
-                    child: SvgPicture.asset(category[2]["icon"]),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  category[2]["text"],
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            width: (55 / 375.0) * MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                AspectRatio(
-                  aspectRatio: 1,
-                  child: Container(
-                    padding: EdgeInsets.all(
-                        (15 / 375.0) * MediaQuery.of(context).size.width),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFECDF),
-                      borderRadius: BorderRadius.circular(10),
+                    Text(
+                      category[i]["text"],
+                      textAlign: TextAlign.center,
                     ),
-                    child: SvgPicture.asset(category[3]["icon"]),
-                  ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  category[3]["text"],
-                  textAlign: TextAlign.center,
-                ),
-              ],
+              ),
             ),
-          ),
-          SizedBox(
-            width: (55 / 375.0) * MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                AspectRatio(
-                  aspectRatio: 1,
-                  child: Container(
-                    padding: EdgeInsets.all(
-                        (15 / 375.0) * MediaQuery.of(context).size.width),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFECDF),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SvgPicture.asset(category[4]["icon"]),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  category[4]["text"],
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );

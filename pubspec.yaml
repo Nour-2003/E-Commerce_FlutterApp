@@ -70,6 +70,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - HomePageImgs/
     - HomePageImgs/Bell.svg
     - HomePageImgs/CartIcon.svg
     - HomePageImgs/Discover.svg
@@ -87,7 +88,11 @@ flutter:
     - HomePageImgs/ps4_console_white_4.png
     - HomePageImgs/wirelessheadset.png
     - HomePageImgs/glap.png
-
+    - HomePageImgs/laptop-svgrepo-com.svg
+    - HomePageImgs/broom-svgrepo-com.svg
+    - HomePageImgs/groceries-svgrepo-com.svg
+    - HomePageImgs/perfume-svgrepo-com.svg
+    - HomePageImgs/mobile-svgrepo-com.svg
 
 
 

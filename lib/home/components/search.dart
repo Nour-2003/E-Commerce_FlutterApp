@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:training_project/screens/CartPage.dart';
+import 'package:training_project/screens/NotificationPage.dart';
 import 'package:training_project/screens/SearchDisp.dart';
 
 
@@ -44,7 +46,13 @@ class Search extends StatelessWidget
           ),
 
           InkWell(
-            onTap: (){},
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CartPage()),
+              );
+            },
             borderRadius: BorderRadius.circular(50),
             child: Stack(
               children: [
@@ -66,7 +74,14 @@ class Search extends StatelessWidget
 
 
           InkWell(
-            onTap: (){},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NotificationPage(),
+                ),
+              );
+            },
             borderRadius: BorderRadius.circular(50),
             child: Stack(
               children: [
@@ -75,7 +90,7 @@ class Search extends StatelessWidget
                   height: (46 / 375.0) * MediaQuery.of(context).size.width,
                   width: (46 / 375.0) * MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    color:const Color(0xFF979797).withOpacity(0.1),
+                    color: const Color(0xFF979797).withOpacity(0.1),
                     shape: BoxShape.circle,
                   ),
                   child: SvgPicture.asset("HomePageImgs/Bell.svg"),
@@ -92,19 +107,16 @@ class Search extends StatelessWidget
                       border: Border.all(
                         width: 1.5,
                         color: Colors.white,
-
                       ),
-
                     ),
                     child: Center(
                       child: Text(
-                        "3",
+                        "1",
                         style: TextStyle(
                           fontSize: (10 / 375.0) * MediaQuery.of(context).size.width,
                           height: 1,
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
-
                         ),
                       ),
                     ),

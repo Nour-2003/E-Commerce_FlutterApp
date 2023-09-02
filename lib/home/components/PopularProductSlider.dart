@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dio/dio.dart';
-import 'package:training_project/favorite.dart';
 import 'package:training_project/screens/ProductDetailsPage.dart';
 
 class PopularProducts extends StatefulWidget {
@@ -12,7 +11,7 @@ class PopularProducts extends StatefulWidget {
 }
 
 class _PopularProductsState extends State<PopularProducts> {
-  var jasonList = [];
+  var jsonList = []; // Corrected variable name
 
   @override
   void initState() {
@@ -26,7 +25,7 @@ class _PopularProductsState extends State<PopularProducts> {
 
       if (response.statusCode == 200) {
         setState(() {
-          jasonList = response.data["products"] as List;
+          jsonList = response.data["products"] as List;
         });
       } else {
         print(response.statusCode);
@@ -38,49 +37,53 @@ class _PopularProductsState extends State<PopularProducts> {
 
   @override
   Widget build(BuildContext context) {
-    return jasonList.isNotEmpty
+    return jsonList.isNotEmpty
         ? Container(
       height: 250, // Adjust the height as needed
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: jasonList.length,
+        itemCount: jsonList.length, // Corrected variable name
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(
-                left: (20 / 375.0) * MediaQuery.of(context).size.width),
+              left: (20 / 375.0) * MediaQuery.of(context).size.width,
+            ),
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ProductDetailsPage(product: jasonList[index]),
+                    builder: (context) =>
+                        ProductDetailsPage(product: jsonList[index]), // Corrected variable name
                   ),
                 );
               },
               child: SizedBox(
-                width: (140 / 375.0) * MediaQuery.of(context).size.width,
+                width:
+                (140 / 375.0) * MediaQuery.of(context).size.width,
                 child: Column(
                   children: [
                     AspectRatio(
                       aspectRatio: 1.02,
                       child: Container(
                         padding: EdgeInsets.all(
-                            (20 / 375.0) * MediaQuery.of(context).size.width),
+                          (20 / 375.0) * MediaQuery.of(context).size.width,
+                        ),
                         decoration: BoxDecoration(
-                          color:
-                          const Color(0xFF979797).withOpacity(0.1),
+                          color: const Color(0xFF979797).withOpacity(0.1),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Image.network(
-                          jasonList[index]['images'][0] ??
+                          jsonList[index]['images'][0] ??
                               "https://i.dummyjson.com/data/products/1/1.jpg",
                           fit: BoxFit.fill,
                         ),
-                      ),),
+                      ),
+                    ),
                     const SizedBox(height: 5),
                     Text(
-                      jasonList[index]["title"],
-                      style:  TextStyle(
+                      jsonList[index]["title"],
+                      style: TextStyle(
                         color: Theme.of(context).colorScheme.onSurface,
                       ),
                       maxLines: 1,
@@ -89,7 +92,7 @@ class _PopularProductsState extends State<PopularProducts> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "\$${jasonList[index]["price"].toString()}",
+                          "\$${jsonList[index]["price"].toString()}",
                           style: const TextStyle(
                             color: Color.fromARGB(255, 184, 96, 56),
                           ),

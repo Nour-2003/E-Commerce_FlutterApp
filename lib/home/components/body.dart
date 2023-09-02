@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,29 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  void signUserout() {
-    FirebaseAuth.instance.signOut();
+  List<dynamic> jsonList = []; // Declare jsonList as a property
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
   }
 
+  void getData() async {
+    try {
+      var response = await Dio().get('https://dummyjson.com/products');
+
+      if (response.statusCode == 200) {
+        setState(() {
+          jsonList = response.data["products"] as List;
+        });
+      } else {
+        print(response.statusCode);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(context) {
@@ -36,7 +56,7 @@ class _BodyState extends State<Body> {
             SizedBox(
               height: (30 / 375.0) * MediaQuery.of(context).size.width,
             ),
-            Categories(),
+            Categories(jsonList: jsonList), // Pass jsonList to Categories
             SizedBox(
               height: (30 / 375.0) * MediaQuery.of(context).size.width,
             ),
@@ -74,8 +94,8 @@ class _BodyState extends State<Body> {
                   Text(
                     "Popular Products",
                     style: TextStyle(
-                      fontSize:
-                      (18 / 375.0) * MediaQuery.of(context).size.width,
+                        fontSize:
+                        (18 / 375.0) * MediaQuery.of(context).size.width,
                         color: Theme.of(context).colorScheme.onSurface
                     ),
                   ),
