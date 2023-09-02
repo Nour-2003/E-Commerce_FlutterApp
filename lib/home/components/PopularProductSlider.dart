@@ -84,7 +84,7 @@ class _PopularProductsState extends State<PopularProducts> {
                     Text(
                       jsonList[index]["title"],
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSurface,
+                        color:  Color(0xff4a4e69),
                       ),
                       maxLines: 1,
                     ),

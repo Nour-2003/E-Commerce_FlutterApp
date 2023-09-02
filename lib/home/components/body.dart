@@ -73,7 +73,7 @@ class _BodyState extends State<Body> {
                       fontSize:
                       (18 / 375.0) * MediaQuery.of(context).size.width,
                       //color: Theme.of(context).colorScheme.onSurface,
-                      color: Color(0xff4a4e69),
+                      color: Color(0xff22223b),
                     ),
                   ),
                   const Text("See More",
