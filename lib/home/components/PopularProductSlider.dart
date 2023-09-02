@@ -94,7 +94,7 @@ class _PopularProductsState extends State<PopularProducts> {
                         Text(
                           "\$${jsonList[index]["price"].toString()}",
                           style: const TextStyle(
-                            color: Color.fromARGB(255, 184, 96, 56),
+                            color: Color(0xff4a4e69),
                           ),
                         ),
                       ],
@@ -107,7 +107,7 @@ class _PopularProductsState extends State<PopularProducts> {
         },
       ),
     )
-        : Center(
+        :const Center(
       child: CircularProgressIndicator(color: Colors.black12),
     );
   }

@@ -16,14 +16,14 @@ class Discount extends StatelessWidget
               width: double.infinity,
               //height: 90,
               decoration: BoxDecoration(
-                color: const Color(0xff4A3298),
+                color: const Color(0xff22223b),
                 borderRadius: BorderRadius.circular(20),
               ),
               child:const Text.rich(
                 TextSpan(
                   text: "A Summer Surprise\n",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Color(0xfff2e9e4),
                   ),
                   children: [
                     TextSpan(
@@ -31,7 +31,7 @@ class Discount extends StatelessWidget
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-
+                        color: Color(0xfff2e9e4)
                       ),
                     ),
                   ],

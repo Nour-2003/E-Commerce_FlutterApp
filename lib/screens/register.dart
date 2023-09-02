@@ -95,8 +95,11 @@ class _RegisterPageState extends State<RegisterPage> {
             width: double.infinity,
             decoration: const BoxDecoration(
               gradient: LinearGradient(colors: [
-                Color(0xFFFF7643),
-                Color(0xff281537),
+                Color(0xFF22223B),
+              Color(0xff4A4E69),
+              Color(0xff9A8C98),
+              Color(0xffC9ADA7),
+              Color(0xffF2E9E4)
               ]),
             ),
             child: const Padding(
@@ -117,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40)),
-                color: Colors.white,
+                color: Color(0xfff2e9e4),
               ),
               height: double.infinity,
               width: double.infinity,
@@ -136,12 +139,14 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           },
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.person,color: Colors.deepOrange,),
+                            prefixIcon:const Icon(Icons.person,
+                            color: Color(0xff22223b),
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
                             labelStyle: const TextStyle(
-                              color: Colors.black,
+                              color: Color(0xff22223b),
                               fontSize: 15,
                             ),
                             hintStyle: const TextStyle(color: Colors.grey),
@@ -164,12 +169,14 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           },
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.email,color: Colors.deepOrange,),
+                            prefixIcon:const Icon(Icons.email,
+                            color: Color(0xff22223b),
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
                             labelStyle: const TextStyle(
-                              color: Colors.black,
+                              color: Color(0xff22223b),
                               fontSize: 15,
                             ),
                             hintStyle: const TextStyle(color: Colors.grey),
@@ -202,15 +209,15 @@ class _RegisterPageState extends State<RegisterPage> {
                                     passwordtobescured = !passwordtobescured;
                                   });
                                 }),
-                            prefixIcon: Icon(
+                            prefixIcon:const Icon(
                               Icons.lock,
-                              color: Colors.deepOrange,
+                              color: Color(0xff22223b),
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
                             labelStyle: const TextStyle(
-                              color: Colors.black,
+                              color: Color(0xff22223b),
                               fontSize: 15,
                             ),
                             hintStyle: const TextStyle(color: Colors.grey),
@@ -243,15 +250,15 @@ class _RegisterPageState extends State<RegisterPage> {
                                     passwordtobescured1 = !passwordtobescured1;
                                   });
                                 }),
-                            prefixIcon: Icon(
+                            prefixIcon:const Icon(
                               Icons.lock,
-                              color: Colors.deepOrange,
+                              color: Color(0xff22223b),
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
                             labelStyle: const TextStyle(
-                              color: Colors.black,
+                              color: Color(0xff22223b),
                               fontSize: 15,
                             ),
                             hintStyle: const TextStyle(color: Colors.grey),
@@ -276,12 +283,12 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           },
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.phone,color: Colors.deepOrange,),
+                            prefixIcon: Icon(Icons.phone,color: Color(0xff22223b),),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
                             labelStyle: const TextStyle(
-                              color: Colors.black,
+                              color: Color(0xff22223b),
                               fontSize: 15,
                             ),
                             hintStyle: const TextStyle(color: Colors.grey),
@@ -302,7 +309,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               backgroundColor:
-                                  const Color.fromARGB(255, 188, 69, 61),
+                                 const Color(0xff22223b),
                             ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
@@ -333,7 +340,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   style: TextStyle(color: Colors.grey)),
                               TextSpan(
                                 text: 'Sign in ',
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(color: Color(0xff22223b)),
                               ),
                               TextSpan(
                                 text: "with your account",

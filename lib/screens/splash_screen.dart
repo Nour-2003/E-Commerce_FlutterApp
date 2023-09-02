@@ -39,8 +39,11 @@ class _splash_screenState extends State<splash_screen> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFFFF7643),
-              Color(0xff281537),
+              Color(0xFF22223B),
+              Color(0xff4A4E69),
+              Color(0xff9A8C98),
+              Color(0xffC9ADA7),
+              Color(0xffF2E9E4)
             ],
           ),
         ),
@@ -51,9 +54,9 @@ class _splash_screenState extends State<splash_screen> {
               duration: Duration(milliseconds: 150),
               curve: Curves.easeIn,
               child: const Text(
-                "our project",
+                "Amicus",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Color(0xfff2e9e4),
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),

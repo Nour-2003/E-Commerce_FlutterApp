@@ -18,11 +18,14 @@ class Profile extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-        decoration: BoxDecoration(
+        decoration:const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFFFF7643),
-              Color(0xff281537),
+              Color(0xFF22223B),
+              Color(0xff4A4E69),
+              Color(0xff9A8C98),
+              Color(0xffC9ADA7),
+              Color(0xffF2E9E4)
             ],
           ),
         ),
@@ -101,7 +104,7 @@ class Profile extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  backgroundColor: const Color.fromARGB(255, 176, 51, 42),
+                  backgroundColor: const Color(0xff22223b),
                 ),
                 child: Text(
                   "Sign out",

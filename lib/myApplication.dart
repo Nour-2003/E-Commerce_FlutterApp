@@ -41,7 +41,8 @@ class _MyApplicationState extends State<MyApplication>
             });
           },
           child: Icon(
-            iconBool ? iconDark : iconLight,color:iconBool? Colors.black : Colors.white,
+            iconBool ? iconDark : iconLight,
+            color:iconBool? Colors.black : Colors.white,
           ),
         ),
         floatingActionButtonLocation:FloatingActionButtonLocation.endFloat ,

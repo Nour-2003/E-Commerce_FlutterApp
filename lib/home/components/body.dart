@@ -43,6 +43,7 @@ class _BodyState extends State<Body> {
   Widget build(context) {
     return Scaffold(
       body: SafeArea(
+        
         child: ListView(
           children: [
             SizedBox(
@@ -71,10 +72,14 @@ class _BodyState extends State<Body> {
                     style: TextStyle(
                       fontSize:
                       (18 / 375.0) * MediaQuery.of(context).size.width,
-                      color: Theme.of(context).colorScheme.onSurface,
+                      //color: Theme.of(context).colorScheme.onSurface,
+                      color: Color(0xff4a4e69),
                     ),
                   ),
-                  const Text("See More"),
+                  const Text("See More",
+                  style: TextStyle(
+                    color: Color(0xff4a4e69),
+                  ),),
                 ],
               ),
             ),
@@ -96,10 +101,14 @@ class _BodyState extends State<Body> {
                     style: TextStyle(
                         fontSize:
                         (18 / 375.0) * MediaQuery.of(context).size.width,
-                        color: Theme.of(context).colorScheme.onSurface
+                        //color: Theme.of(context).colorScheme.onSurface
+                        color: Color(0xff4a4e69),
                     ),
                   ),
-                  const Text("See More"),
+                  const Text("See More",
+                  style: TextStyle(
+                    color: Color(0xff4a4e69),
+                  ),),
                 ],
               ),
             ),

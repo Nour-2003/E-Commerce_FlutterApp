@@ -21,7 +21,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar>
       onTap: widget.onTap,
 
 
-      selectedItemColor: const Color.fromARGB(255, 246, 93, 11), // Active color
+      selectedItemColor: const Color(0xff22223b), // Active color
       unselectedItemColor: Colors.grey, // Unselected color
       items: const[
         BottomNavigationBarItem(

@@ -32,8 +32,8 @@ class SpecialOffer extends StatelessWidget
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
-                                    Color(0xff343434).withOpacity(0.4),
-                                    Color(0xff343434).withOpacity(0.15),
+                                    Color(0xffc9ada7).withOpacity(0.4),
+                                    Color(0xfff2e9e4).withOpacity(0.15),
                                     ],
                                   ),
                               ),
@@ -95,8 +95,8 @@ class SpecialOffer extends StatelessWidget
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
-                                    Color(0xff343434).withOpacity(0.4),
-                                    Color(0xff343434).withOpacity(0.15),
+                                     Color(0xffc9ada7).withOpacity(0.4),
+                                    Color(0xfff2e9e4).withOpacity(0.15),
                                     ],
                                   ),
                               ),

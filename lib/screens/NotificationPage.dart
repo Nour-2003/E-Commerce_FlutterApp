@@ -10,11 +10,14 @@ class NotificationPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration:const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color(0xFFFF7643),
-                Color(0xff281537),
+                Color(0xFF22223B),
+              Color(0xff4A4E69),
+              Color(0xff9A8C98),
+              Color(0xffC9ADA7),
+              Color(0xffF2E9E4)
               ],
             ),
           ),
@@ -35,7 +38,7 @@ class NotificationPage extends StatelessWidget {
               SizedBox(height: 20),
 
               // Add more notification-related content here
-              Text(
+              const Text(
                 "Make the most of your summer spending!\nGet a fantastic cash back offer on select purchases within our app.",
                 style: TextStyle(fontSize: 20),
               ),

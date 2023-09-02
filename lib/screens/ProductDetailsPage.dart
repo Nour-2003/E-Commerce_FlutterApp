@@ -92,11 +92,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       child: Scaffold(
         appBar: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(
+            decoration:const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color(0xFFFF7643),
-                  Color(0xff281537),
+                  Color(0xFF22223B),
+              Color(0xff4A4E69),
+              Color(0xff9A8C98),
+              Color(0xffC9ADA7),
+              Color(0xffF2E9E4)
                 ],
               ),
             ),
@@ -114,86 +117,102 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+             const SizedBox(height:50),
               Text(
                 widget.product['category'],
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+                style:const TextStyle(fontSize: 16,
+                 color: Color(0xffc9ada7)),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
                   widget.product['images'][0],
-                  height: 300,
-                  width: 300,
+                  height: 200,
+                  width: 200,
                   fit: BoxFit.fill,
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Text(
                 widget.product['title'],
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 18,
+                   fontWeight: FontWeight.bold,
+                   color: Color(0xff22223b)
+                   ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 widget.product['description'],
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 14),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 '\$${widget.product["price"].toString()}',
                 style: TextStyle(fontSize: 18, color: Colors.green),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.star, color: Colors.yellow),
-                  SizedBox(width: 4),
+                  const Icon(
+                    Icons.star,
+                     color: Colors.yellow),
+                  const SizedBox(width: 4),
                   Text(
                     '${widget.product["rating"]} Stars',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-              GestureDetector(
-                onTap: _toggleFavorite,
-                child: Container(
-                  width: 72,
-                  height: 72,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: isFavorite
-                        ? Colors.red.withOpacity(0.1)
-                        : Colors.grey.withOpacity(0.1),
-                  ),
-                  child: Icon(
-                    isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: isFavorite ? Colors.red : null,
-                    size: 36,
+              const SizedBox(height: 20),
+              Center(
+                child: Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: _toggleFavorite,
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: isFavorite
+                              ? Color(0xff22223b).withOpacity(0.1)
+                              : Colors.grey.withOpacity(0.1),
+                        ),
+                        child: Icon(
+                          isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: isFavorite ? Color(0xff22223b) : null,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                
+                const SizedBox(width: 20),
+                GestureDetector(
+                  onTap: _addToCart,
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: isAddedToCart
+                          ? const Color(0xff22223b).withOpacity(0.1)
+                          : Colors.grey.withOpacity(0.1),
+                    ),
+                    child: Icon(
+                      isAddedToCart ? Icons.remove_shopping_cart : Icons.add_shopping_cart,
+                      color: isAddedToCart ? Color(0xff22223b): null,
+                      size: 20,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 20),
-              GestureDetector(
-                onTap: _addToCart,
-                child: Container(
-                  width: 72,
-                  height: 72,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: isAddedToCart
-                        ? Colors.red.withOpacity(0.1)
-                        : Colors.grey.withOpacity(0.1),
+                  ],
                   ),
-                  child: Icon(
-                    isAddedToCart ? Icons.remove_shopping_cart : Icons.add_shopping_cart,
-                    color: isAddedToCart ? Colors.red : null,
-                    size: 36,
-                  ),
-                ),
               ),
             ],
           ),

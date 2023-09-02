@@ -60,11 +60,13 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-            backgroundColor: Color(0xFFFF7643),
+            backgroundColor: Color(0xFF22223b),
             title: Center(
               child: Text(
                 message,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(
+                  color: Color(0xfff2e9e4),
+                ),
               ),
             ));
       },
@@ -81,8 +83,11 @@ class _LoginPageState extends State<LoginPage> {
             width: double.infinity,
             decoration: const BoxDecoration(
               gradient: LinearGradient(colors: [
-                Color(0xFFFF7643),
-                Color(0xff281537),
+                Color(0xFF22223B),
+              Color(0xff4A4E69),
+              Color(0xff9A8C98),
+              Color(0xffC9ADA7),
+              Color(0xffF2E9E4)
               ]),
             ),
             child: const Padding(
@@ -91,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                 'Hello\nSign in!',
                 style: TextStyle(
                     fontSize: 30,
-                    color: Colors.white,
+                    color: Color(0xfff2e9e4),
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -104,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                   topLeft: Radius.circular(40),
                   topRight: Radius.circular(40),
                 ),
-                color: Colors.white,
+                color: Color(0xfff2e9e4),
               ),
               height: MediaQuery.of(context).size.height - 200,
               width: MediaQuery.of(context).size.width,
@@ -124,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                             return null;
                           },
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.email,color: Colors.deepOrange,),
+                            prefixIcon:const Icon(Icons.email,color: Color(0xff22223b),),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -154,9 +159,9 @@ class _LoginPageState extends State<LoginPage> {
                                     passwordtobescured = !passwordtobescured;
                                   });
                                 }),
-                            prefixIcon: Icon(
+                            prefixIcon:const Icon(
                               Icons.lock,
-                              color: Colors.deepOrange,
+                              color: Color(0xff22223b),
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -180,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
-                              ), backgroundColor: const Color.fromARGB(255, 176, 51, 42),
+                              ), backgroundColor: const Color(0xff22223b),
                             ),
                             child: const Text(
                               "Sign In",
@@ -191,12 +196,12 @@ class _LoginPageState extends State<LoginPage> {
                         const SizedBox(
                           height: 15,
                         ),
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               "___________ or continue with ___________",
-                              style: TextStyle(color: Colors.grey),
+                              style: TextStyle(color: Color(0xffc9ada7)),
                             )
                           ],
                         ),
@@ -237,11 +242,11 @@ class _LoginPageState extends State<LoginPage> {
                               TextSpan(
                                 text: 'or  ',
                                 style: TextStyle(
-                                    color: Color.fromARGB(255, 243, 67, 55)),
+                                    color: Color(0xff22223b)),
                               ),
                               TextSpan(
                                 text: "Register a new account",
-                                style: TextStyle(color: Colors.grey),
+                                style: TextStyle(color: Color(0xffc9ada7)),
                               ),
                             ]),
                           ),

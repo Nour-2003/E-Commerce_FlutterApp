@@ -48,10 +48,12 @@ class Categories extends StatelessWidget {
                         padding: EdgeInsets.all(
                             (15 / 375.0) * MediaQuery.of(context).size.width),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFFFECDF),
+                          color: const Color(0xFFf2e9e4),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: SvgPicture.asset(category[i]["icon"]),
+                        child: SvgPicture.asset(category[i]["icon"],
+                          color: Color(0xff9a8c98),
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -60,6 +62,13 @@ class Categories extends StatelessWidget {
                     Text(
                       category[i]["text"],
                       textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff22223b),
+                       //color: Colors.black
+                      ),
+                      maxLines: 1,
                     ),
                   ],
                 ),

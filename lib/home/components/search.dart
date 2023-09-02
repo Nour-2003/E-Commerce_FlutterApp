@@ -36,6 +36,7 @@ class Search extends StatelessWidget
                 enabledBorder: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 hintText: "Search Product",
+                iconColor: Color(0xff4a4e69),
                 prefixIcon:const Icon(Icons.search),
                 contentPadding: EdgeInsets.symmetric(
                   horizontal: (20 / 375.0) * MediaQuery.of(context).size.width,
@@ -64,7 +65,9 @@ class Search extends StatelessWidget
                     color:const Color(0xFF979797).withOpacity(0.1),
                     shape: BoxShape.circle,
                   ),
-                  child: SvgPicture.asset("HomePageImgs/CartIcon.svg"),
+                  child: SvgPicture.asset("HomePageImgs/CartIcon.svg",
+                  color: Color(0xff4a4e69),
+                  ),
                 ),
 
               ],
@@ -93,7 +96,10 @@ class Search extends StatelessWidget
                     color: const Color(0xFF979797).withOpacity(0.1),
                     shape: BoxShape.circle,
                   ),
-                  child: SvgPicture.asset("HomePageImgs/Bell.svg"),
+                  child: SvgPicture.asset("HomePageImgs/Bell.svg",
+                  color: Color(0xff4a4e69)
+                  ,
+                  ),
                 ),
                 Positioned(
                   top: -3,
@@ -102,7 +108,7 @@ class Search extends StatelessWidget
                     height: (16 / 375.0) * MediaQuery.of(context).size.width,
                     width: (16 / 375.0) * MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      color: const Color(0xffff4848),
+                      color: const Color(0xff22223b),
                       shape: BoxShape.circle,
                       border: Border.all(
                         width: 1.5,
