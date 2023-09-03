@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../DataBaseHelper.dart';
 
 class ProductDetailsPage extends StatefulWidget {
@@ -14,7 +17,6 @@ class ProductDetailsPage extends StatefulWidget {
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   bool isFavorite = false;
   bool isAddedToCart = false;
-
   @override
   void initState() {
     super.initState();
@@ -88,6 +90,25 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final random = Random();
+    // Generate a random integer between a range (inclusive)
+    int randomInt = random.nextInt(5) + 1;
+    List<Widget> starList =[];
+    int realNumber = randomInt.floor();
+    int partNumber = ((randomInt- realNumber)*10).ceil();
+    for(int i=0;i<6;i++)
+      {
+        if(i <realNumber){
+          starList.add(Icon(Icons.star,color: Colors.yellow,size: 20,));
+        }
+        else if(i==realNumber)
+          {
+
+          }
+        else{
+          starList.add(Icon(Icons.star,color: Colors.grey,size: 20,));
+        }
+      }
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -159,16 +180,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.star,
-                     color: Colors.yellow),
-                  const SizedBox(width: 4),
-                  Text(
-                    '${widget.product["rating"]} Stars',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ],
+                children:
+                 starList,
               ),
               const SizedBox(height: 20),
               Center(
