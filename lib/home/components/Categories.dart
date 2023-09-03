@@ -62,10 +62,12 @@ class Categories extends StatelessWidget {
                     Text(
                       category[i]["text"],
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
+                      style:  TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,
-                        color: Color(0xff22223b),
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white // Change this to white for dark theme
+                            :Color(0xff22223b),
                        //color: Colors.black
                       ),
                       maxLines: 1,

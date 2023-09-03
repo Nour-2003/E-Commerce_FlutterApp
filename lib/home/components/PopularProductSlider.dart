@@ -84,7 +84,9 @@ class _PopularProductsState extends State<PopularProducts> {
                     Text(
                       jsonList[index]["title"],
                       style: TextStyle(
-                        color:  Color(0xff4a4e69),
+                        color:  Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white // Change this to white for dark theme
+                            :Color(0xff4a4e69),
                       ),
                       maxLines: 1,
                     ),
@@ -93,8 +95,10 @@ class _PopularProductsState extends State<PopularProducts> {
                       children: [
                         Text(
                           "\$${jsonList[index]["price"].toString()}",
-                          style: const TextStyle(
-                            color: Color(0xff4a4e69),
+                          style:  TextStyle(
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? Colors.white // Change this to white for dark theme
+                                :Color(0xff4a4e69),
                           ),
                         ),
                       ],

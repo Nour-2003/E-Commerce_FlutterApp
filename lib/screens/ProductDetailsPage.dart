@@ -136,10 +136,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               const SizedBox(height: 16),
               Text(
                 widget.product['title'],
-                style: const TextStyle(
+                style:  TextStyle(
                   fontSize: 18,
                    fontWeight: FontWeight.bold,
-                   color: Color(0xff22223b)
+                    color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white
+                    :Color(0xff22223b),
                    ),
                 textAlign: TextAlign.center,
               ),
@@ -181,7 +183,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: isFavorite
-                              ? Color(0xff22223b).withOpacity(0.1)
+                              ? Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white // Change this to white for dark theme
+                              :Color(0xff22223b).withOpacity(0.1)
                               : Colors.grey.withOpacity(0.1),
                         ),
                         child: Icon(
@@ -201,7 +205,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: isAddedToCart
-                          ? const Color(0xff22223b).withOpacity(0.1)
+                          ?  Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white // Change this to white for dark theme
+                          :Color(0xff22223b).withOpacity(0.1)
                           : Colors.grey.withOpacity(0.1),
                     ),
                     child: Icon(
