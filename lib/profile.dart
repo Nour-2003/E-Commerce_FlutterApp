@@ -33,14 +33,14 @@ class Profile extends StatelessWidget {
           title: Text('Profile')
       ),
       body: SafeArea(
-        child: SingleChildScrollView( // Wrap your Column with SingleChildScrollView
+        child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(height: 50,),
               // User Info
               CircleAvatar(
                 radius: 50.0,
-                backgroundColor: Colors.blue,
+                backgroundColor: const Color(0xff22223b),
                 child: Text(
                   username.isEmpty ? '?' : username[0].toUpperCase(),
                   style: TextStyle(

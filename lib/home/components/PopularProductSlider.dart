@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dio/dio.dart';
 import 'package:training_project/screens/ProductDetailsPage.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class PopularProducts extends StatefulWidget {
   @override
@@ -40,10 +41,9 @@ class _PopularProductsState extends State<PopularProducts> {
     return jsonList.isNotEmpty
         ? Container(
       height: 250, // Adjust the height as needed
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: jsonList.length, // Corrected variable name
-        itemBuilder: (context, index) {
+      child: CarouselSlider.builder(
+        itemCount: jsonList.length,
+        itemBuilder: (context, index, realIndex) {
           return Padding(
             padding: EdgeInsets.only(
               left: (20 / 375.0) * MediaQuery.of(context).size.width,
@@ -59,8 +59,7 @@ class _PopularProductsState extends State<PopularProducts> {
                 );
               },
               child: SizedBox(
-                width:
-                (140 / 375.0) * MediaQuery.of(context).size.width,
+                width: (140 / 375.0) * MediaQuery.of(context).size.width,
                 child: Column(
                   children: [
                     AspectRatio(
@@ -84,9 +83,9 @@ class _PopularProductsState extends State<PopularProducts> {
                     Text(
                       jsonList[index]["title"],
                       style: TextStyle(
-                        color:  Theme.of(context).brightness == Brightness.dark
+                        color: Theme.of(context).brightness == Brightness.dark
                             ? Colors.white // Change this to white for dark theme
-                            :Color(0xff4a4e69),
+                            : Color(0xff4a4e69),
                       ),
                       maxLines: 1,
                     ),
@@ -95,10 +94,10 @@ class _PopularProductsState extends State<PopularProducts> {
                       children: [
                         Text(
                           "\$${jsonList[index]["price"].toString()}",
-                          style:  TextStyle(
+                          style: TextStyle(
                             color: Theme.of(context).brightness == Brightness.dark
                                 ? Colors.white // Change this to white for dark theme
-                                :Color(0xff4a4e69),
+                                : Color(0xff4a4e69),
                           ),
                         ),
                       ],
@@ -109,9 +108,15 @@ class _PopularProductsState extends State<PopularProducts> {
             ),
           );
         },
+        options: CarouselOptions(
+          autoPlay: true, // Automatically slide
+          autoPlayInterval: Duration(seconds: 2), // Auto slide interval
+          aspectRatio: 1.2, // Adjust aspect ratio as needed
+          enlargeCenterPage: false,
+        ),
       ),
     )
-        :const Center(
+        : const Center(
       child: CircularProgressIndicator(color: Colors.black12),
     );
   }
