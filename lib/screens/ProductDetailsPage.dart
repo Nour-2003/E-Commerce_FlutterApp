@@ -17,13 +17,13 @@ class ProductDetailsPage extends StatefulWidget {
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   bool isFavorite = false;
   bool isAddedToCart = false;
+  int randomInt = Random().nextInt(5) + 1;
   @override
   void initState() {
     super.initState();
     _checkFavoriteStatus();
     _checkCartStatus();
   }
-
   Future<void> _checkFavoriteStatus() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
@@ -87,28 +87,27 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       });
     }
   }
-
-  @override
-  Widget build(BuildContext context) {
-    final random = Random();
-    // Generate a random integer between a range (inclusive)
-    int randomInt = random.nextInt(5) + 1;
+   List<Widget> star(){
     List<Widget> starList =[];
     int realNumber = randomInt.floor();
     int partNumber = ((randomInt- realNumber)*10).ceil();
     for(int i=0;i<6;i++)
-      {
-        if(i <realNumber){
-          starList.add(Icon(Icons.star,color: Colors.yellow,size: 20,));
-        }
-        else if(i==realNumber)
-          {
-
-          }
-        else{
-          starList.add(Icon(Icons.star,color: Colors.grey,size: 20,));
-        }
+    {
+      if(i <realNumber){
+        starList.add(Icon(Icons.star,color: Colors.yellow,size: 20,));
       }
+      else if(i==realNumber)
+      {
+
+      }
+      else{
+        starList.add(Icon(Icons.star,color: Colors.grey,size: 20,));
+      }
+    }
+    return starList;
+  }
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -181,7 +180,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:
-                 starList,
+               star(),
               ),
               const SizedBox(height: 20),
               Center(
