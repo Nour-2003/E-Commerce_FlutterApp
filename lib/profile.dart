@@ -107,10 +107,14 @@ class Profile extends StatelessWidget {
                     ),
                     backgroundColor: const Color(0xff22223b),
                   ),
-                  child: Text(
+                  child:Text(
                     "Sign out",
-                    style: TextStyle(fontWeight: FontWeight.w700),
-                  ),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                  )
+
                 ),
               ),
             ],
