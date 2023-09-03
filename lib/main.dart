@@ -11,7 +11,7 @@ import 'package:dio/dio.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-   //name: 'ecommsignin',
+   name: 'ecommsignin',
     options: const FirebaseOptions(
         apiKey: "AIzaSyA6NFUMe_bv8_bY0X1bmV8qnqVHLsWfask",
         appId: "1:256799517051:android:dd9363916a69f3ea6375de",

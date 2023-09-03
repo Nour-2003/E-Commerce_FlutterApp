@@ -102,7 +102,7 @@ class Search extends StatelessWidget
                   ),
                 ),
                 Positioned(
-                  top: -3,
+                  top: 0,
                   right: 0,
                   child: Container(
                     height: (16 / 375.0) * MediaQuery.of(context).size.width,

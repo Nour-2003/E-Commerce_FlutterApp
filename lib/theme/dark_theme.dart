@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
+
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
- colorScheme: ColorScheme.dark(
-  primary: Colors.black,
-  secondary: Colors.black
+  primaryColor: Colors.white,
+  secondaryHeaderColor: Color(0xff212529),
+  colorScheme: ColorScheme.dark(),
+  floatingActionButtonTheme:FloatingActionButtonThemeData(
+      backgroundColor: Colors.black
+  ),
+  iconTheme: IconThemeData(
+    color: Colors.white,
   ),
 );
