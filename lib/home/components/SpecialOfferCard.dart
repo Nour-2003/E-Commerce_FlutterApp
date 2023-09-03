@@ -31,9 +31,15 @@ class SpecialOffer extends StatelessWidget
                                 gradient: LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
-                                  colors: [
+                                  colors: Theme.of(context).brightness == Brightness.dark?
+                                  [
+                                    Color(0xff212529).withOpacity(0.8),
+                                    Color(0xff343a40).withOpacity(0.4),
+                                    ]
+
+                                  :[
                                     Color(0xffc9ada7).withOpacity(0.4),
-                                    Color(0xfff2e9e4).withOpacity(0.15),
+                                    Color(0xfff2e9e4).withOpacity(0.13),
                                     ],
                                   ),
                               ),
@@ -94,9 +100,15 @@ class SpecialOffer extends StatelessWidget
                                 gradient: LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
-                                  colors: [
-                                     Color(0xffc9ada7).withOpacity(0.4),
-                                    Color(0xfff2e9e4).withOpacity(0.15),
+                                  colors: Theme.of(context).brightness == Brightness.dark?
+                                  [
+                                    Color(0xff212529).withOpacity(0.8),
+                                    Color(0xff343a40).withOpacity(0.4),
+                                    ]
+
+                                  :[
+                                    Color(0xffc9ada7).withOpacity(0.4),
+                                    Color(0xfff2e9e4).withOpacity(0.13),
                                     ],
                                   ),
                               ),

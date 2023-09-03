@@ -16,22 +16,28 @@ class Discount extends StatelessWidget
               width: double.infinity,
               //height: 90,
               decoration: BoxDecoration(
-                color: const Color(0xff22223b),
+                color: Theme.of(context).brightness == Brightness.dark?
+                Color(0xff212529)
+                : Color(0xff22223b),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child:const Text.rich(
+              child: Text.rich(
                 TextSpan(
                   text: "A Summer Surprise\n",
                   style: TextStyle(
-                    color: Color(0xfff2e9e4),
+                    color:Theme.of(context).brightness == Brightness.dark?
+                        Color(0xffdee2e6)
+                     :Color(0xfff2e9e4),
                   ),
                   children: [
                     TextSpan(
                       text: "CashBack 20%",
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xfff2e9e4)
+                        color: Theme.of(context).brightness == Brightness.dark?
+                        Color(0xffdee2e6)
+                     :Color(0xfff2e9e4),
                       ),
                     ),
                   ],

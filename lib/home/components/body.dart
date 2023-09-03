@@ -74,14 +74,14 @@ class _BodyState extends State<Body> {
                       (18 / 375.0) * MediaQuery.of(context).size.width,
                       //color: Theme.of(context).colorScheme.onSurface,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.white // Change this to white for dark theme
-                          :Color(0xff22223b),
+                          ? Color(0xffdee2e6) // Change this to white for dark theme
+                          :Color(0xff4a4e69),
                     ),
                   ),
                    Text("See More",
                   style: TextStyle(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white // Change this to white for dark theme
+                        ? Color(0xffdee2e6)  // Change this to white for dark theme
                         :Color(0xff4a4e69),
                   ),),
                 ],
@@ -107,14 +107,14 @@ class _BodyState extends State<Body> {
                         (18 / 375.0) * MediaQuery.of(context).size.width,
                         //color: Theme.of(context).colorScheme.onSurface
                         color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white // Change this to white for dark theme
+                            ? Color(0xffdee2e6)  // Change this to white for dark theme
                             :Color(0xff4a4e69),
                     ),
                   ),
                    Text("See More",
                   style: TextStyle(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white // Change this to white for dark theme
+                        ? Color(0xffdee2e6)  // Change this to white for dark theme
                         :Color(0xff4a4e69),
                   ),),
                 ],

@@ -48,11 +48,16 @@ class Categories extends StatelessWidget {
                         padding: EdgeInsets.all(
                             (15 / 375.0) * MediaQuery.of(context).size.width),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFf2e9e4),
+                          color: Theme.of(context).brightness == Brightness.dark?
+                           Color(0xff343a40)
+                          : Color(0xFFf2e9e4),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: SvgPicture.asset(category[i]["icon"],
-                          color: Color(0xff9a8c98),
+                          color:Theme.of(context).brightness == Brightness.dark?
+                            Color(0xff6c757d)
+                           :Color(0xff9a8c98)
+                           ,
                         ),
                       ),
                     ),
@@ -66,7 +71,7 @@ class Categories extends StatelessWidget {
                         fontSize: 10,
                         fontWeight: FontWeight.w600,
                         color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white // Change this to white for dark theme
+                            ? Color(0xffadb5bd) // Change this to white for dark theme
                             :Color(0xff22223b),
                        //color: Colors.black
                       ),
