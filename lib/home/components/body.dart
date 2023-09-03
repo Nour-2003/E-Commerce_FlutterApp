@@ -7,6 +7,7 @@ import 'package:training_project/home/components/discountBanner.dart';
 import 'package:training_project/home/components/Categories.dart';
 import 'package:training_project/home/components/SpecialOfferCard.dart';
 import 'package:training_project/home/components/PopularProductSlider.dart';
+import 'package:training_project/screens/AllProducts.dart';
 import 'package:training_project/screens/login.dart';
 
 class Body extends StatefulWidget {
@@ -43,7 +44,6 @@ class _BodyState extends State<Body> {
   Widget build(context) {
     return Scaffold(
       body: SafeArea(
-        
         child: ListView(
           children: [
             SizedBox(
@@ -72,18 +72,29 @@ class _BodyState extends State<Body> {
                     style: TextStyle(
                       fontSize:
                       (18 / 375.0) * MediaQuery.of(context).size.width,
-                      //color: Theme.of(context).colorScheme.onSurface,
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Color(0xffdee2e6) // Change this to white for dark theme
-                          :Color(0xff4a4e69),
+                          : Color(0xff4a4e69),
                     ),
                   ),
-                   Text("See More",
-                  style: TextStyle(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Color(0xffdee2e6)  // Change this to white for dark theme
-                        :Color(0xff4a4e69),
-                  ),),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AllProducts(), // Navigate to AllProducts screen
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "See More",
+                      style: TextStyle(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Color(0xffdee2e6)  // Change this to white for dark theme
+                            : Color(0xff4a4e69),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -103,20 +114,31 @@ class _BodyState extends State<Body> {
                   Text(
                     "Popular Products",
                     style: TextStyle(
-                        fontSize:
-                        (18 / 375.0) * MediaQuery.of(context).size.width,
-                        //color: Theme.of(context).colorScheme.onSurface
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Color(0xffdee2e6)  // Change this to white for dark theme
-                            :Color(0xff4a4e69),
+                      fontSize:
+                      (18 / 375.0) * MediaQuery.of(context).size.width,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Color(0xffdee2e6)  // Change this to white for dark theme
+                          : Color(0xff4a4e69),
                     ),
                   ),
-                   Text("See More",
-                  style: TextStyle(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Color(0xffdee2e6)  // Change this to white for dark theme
-                        :Color(0xff4a4e69),
-                  ),),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AllProducts(), // Navigate to AllProducts screen
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "See More",
+                      style: TextStyle(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Color(0xffdee2e6)  // Change this to white for dark theme
+                            : Color(0xff4a4e69),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
