@@ -88,7 +88,8 @@ class _CartPageState extends State<CartPage> {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center, // Center the content vertically
+        mainAxisAlignment: MainAxisAlignment.center,
+        // Center the content vertically
         children: [
           if (cartItems.isEmpty) // Show the message when cart is empty
             Center(
@@ -117,7 +118,8 @@ class _CartPageState extends State<CartPage> {
                 },
               ),
             ),
-          if (cartItems.isNotEmpty) // Show the button only if the cart is not empty
+          if (cartItems
+              .isNotEmpty) // Show the button only if the cart is not empty
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
@@ -128,7 +130,8 @@ class _CartPageState extends State<CartPage> {
                     builder: (context) {
                       return AlertDialog(
                         title: Text('Checkout Confirmation'),
-                        content: Text('Are you sure you want to proceed with the checkout?'),
+                        content: Text(
+                            'Are you sure you want to proceed with the checkout?'),
                         actions: [
                           TextButton(
                             onPressed: () {
@@ -148,9 +151,16 @@ class _CartPageState extends State<CartPage> {
                     },
                   );
                 },
-                child: Text('Checkout'),
+                child: Text(
+                  'Checkout',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xff4A4E69), // Change the button color as desired
+                  primary:
+                      Color(0xff4A4E69), // Change the button color as desired
                 ),
               ),
             ),

@@ -30,7 +30,7 @@ class _MyApplicationState extends State<MyApplication>
   Widget build(context)
   {
     return MaterialApp(
-      theme: iconBool ? lightTheme : darkTheme,
+      theme: iconBool ? darkTheme : lightTheme,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: iconBool? Colors.white : Colors.black,
@@ -41,8 +41,8 @@ class _MyApplicationState extends State<MyApplication>
             });
           },
           child: Icon(
-            iconBool ? iconDark : iconLight,
-            color:iconBool? Colors.black : Colors.white,
+            iconBool ? iconLight : iconDark,
+            color:iconBool? Colors.white : Colors.black,
           ),
         ),
         floatingActionButtonLocation:FloatingActionButtonLocation.endFloat ,

@@ -4,7 +4,7 @@ import 'package:training_project/screens/login.dart';
 
 class Profile extends StatelessWidget {
   void signUserOut() {
-    FirebaseAuth.instance.signOut();
+    FirebaseAuth.instance.signOut();//signing out function
   }
 
   @override
