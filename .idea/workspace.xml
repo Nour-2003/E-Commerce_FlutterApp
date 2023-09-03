@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04b80e1-fc16-4e9d-ae34-ec6a600785bc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
@@ -12,9 +13,6 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/home/components/Categories.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/home/components/Categories.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/home/components/PopularProductSlider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/home/components/PopularProductSlider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/home/components/body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/home/components/body.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/ProductDetailsPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/ProductDetailsPage.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

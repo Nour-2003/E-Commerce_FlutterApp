@@ -175,28 +175,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 child: Row(
                    mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    GestureDetector(
-                      onTap: _toggleFavorite,
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: isFavorite
-                              ? Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white // Change this to white for dark theme
-                              :Color(0xff22223b).withOpacity(0.1)
-                              : Colors.grey.withOpacity(0.1),
-                        ),
-                        child: Icon(
-                          isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: isFavorite ? Color(0xff22223b) : null,
-                          size: 20,
-                        ),
-                      ),
-                    ),
-                
-                const SizedBox(width: 20),
                 GestureDetector(
                   onTap: _addToCart,
                   child: Container(
@@ -217,6 +195,28 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     ),
                   ),
                 ),
+                    const SizedBox(width: 20),
+                    GestureDetector(
+                      onTap: _toggleFavorite,
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: isFavorite
+                              ? Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white // Change this to white for dark theme
+                              :Color(0xff22223b).withOpacity(0.1)
+                              : Colors.grey.withOpacity(0.1),
+                        ),
+                        child: Icon(
+                          isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: isFavorite ? Color(0xff22223b) : null,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+
                   ],
                   ),
               ),
