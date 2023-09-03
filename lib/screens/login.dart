@@ -215,7 +215,8 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              onTap: () => AuthService().signInWithGoogle(),
+                              onTap: () { AuthService().signInWithGoogle();
+                              },
                               child: Image.asset(
                                 'assets/images/pngwing.com.png',
                                 height: 72,
