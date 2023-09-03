@@ -77,24 +77,17 @@ class _BodyState extends State<Body> {
                           : Color(0xff4a4e69),
                     ),
                   ),
+
                   GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AllProducts(), // Navigate to AllProducts screen
-                        ),
-                      );
-                    },
-                    child: Text(
-                      "See More",
-                      style: TextStyle(
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Color(0xffdee2e6)  // Change this to white for dark theme
-                            : Color(0xff4a4e69),
-                      ),
+                    child: Icon(
+                      Icons.local_offer, // Replace with the desired offer icon
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white // Change this color for dark theme
+                          : Color(0xff4a4e69),
                     ),
-                  ),
+                  )
+
+
                 ],
               ),
             ),
