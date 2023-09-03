@@ -15,12 +15,11 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/home/components/body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/home/components/body.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
