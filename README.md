@@ -2,6 +2,8 @@
 
 A mobile e-commerce application built using Flutter, designed to provide a seamless shopping experience for users.
 
+![Flutter Version](https://img.shields.io/badge/Flutter-2.2.3-blue)
+![Dart Version](https://img.shields.io/badge/Dart-2.13.4-green)
 
 ## Table of Contents
 
@@ -10,6 +12,7 @@ A mobile e-commerce application built using Flutter, designed to provide a seaml
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+- [Screenshots](#screenshots)
 
 
 ## Introduction
@@ -31,6 +34,16 @@ This Flutter app is designed to offer users a user-friendly and feature-rich e-c
 - **Firebase Integration:** Store user data, order history, and more in the cloud.
 - **Authentication:** Users can log in using Google accounts.
 - **Dark Theme:** Switch between light and dark modes for better user experience.
+
+## Screenshots
+
+![Screenshot 1](home.jpeg)
+![Screenshot 2](dark.jpeg)
+![Screenshot 3](profile.jpeg)
+![Screenshot 3](cart.jpeg)
+
+
+
 
 ## Getting Started
 
